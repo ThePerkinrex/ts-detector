@@ -18,19 +18,24 @@ package es.upm.grise.profundizacion.grupo.aa;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.project.MavenProject;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-
-@Mojo(name = "sayhi")
-public class MyMojo
+@Mojo(name = "ts-detect", defaultPhase = LifecyclePhase.VALIDATE)
+public class TsDetectorMojo
     extends AbstractMojo
 {
+
+    @Parameter(defaultValue = "${project}")
+    private MavenProject projectInformation;
+
+
     @Override
     public void execute() throws MojoExecutionException
     {
-        getLog().info("Hello, world.");
+        getLog().info("Hello, world. " + projectInformation.getBuild().getDirectory());
+
     }
 }

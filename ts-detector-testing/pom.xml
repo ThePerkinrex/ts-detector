@@ -27,7 +27,7 @@
                     <execution>
                         <phase>validate</phase>
                         <goals>
-                            <goal>sayhi</goal>
+                            <goal>ts-detect</goal>
                         </goals>
                     </execution>
                 </executions>
