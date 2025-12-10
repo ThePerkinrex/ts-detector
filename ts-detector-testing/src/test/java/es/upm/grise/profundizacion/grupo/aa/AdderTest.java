@@ -16,7 +16,28 @@ class AdderTest {
 
 
     @Test
-    void addOneOne() {
+    public void addOneOneTest() {
+        assertEquals(2, adder.add(1,1));
+        assertEquals(3, adder.add(2,1));
+        assertEquals(4, adder.add(3,1));
+        assertEquals(2, adder.add(1,1));
+        assertEquals(3, adder.add(2,1));
+        assertEquals(4, adder.add(3,1));
+        assertEquals(2, adder.add(1,1));
+        assertEquals(3, adder.add(2,1));
+        assertEquals(4, adder.add(3,1));
+        assertEquals(2, adder.add(1,1));
+        assertEquals(3, adder.add(2,1));
+        assertEquals(4, adder.add(3,1));
+        assertEquals(2, adder.add(1,1));
+        assertEquals(3, adder.add(2,1));
+        assertEquals(4, adder.add(3,1));
+        assertEquals(2, adder.add(1,1));
+        assertEquals(3, adder.add(2,1));
+        assertEquals(4, adder.add(3,1));
+        assertEquals(2, adder.add(1,1));
+        assertEquals(3, adder.add(2,1));
+        assertEquals(4, adder.add(3,1));
         assertEquals(2, adder.add(1,1));
         assertEquals(3, adder.add(2,1));
         assertEquals(4, adder.add(3,1));

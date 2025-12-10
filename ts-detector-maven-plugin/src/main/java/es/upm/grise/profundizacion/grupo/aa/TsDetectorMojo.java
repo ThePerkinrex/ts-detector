@@ -189,6 +189,32 @@ public class TsDetectorMojo extends AbstractMojo {
         }
 
         runJar(wd, javaExecutable, testSmellDetector.getAbsolutePath(), input.getAbsolutePath());
+
+        File[] files = wd.listFiles(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.startsWith("Output_TestSmellDetection_");
+            }
+        });
+        if (files == null) {
+            throw new IOException("Error reading wd");
+        }
+        File csv = Arrays.stream(files).min(new Comparator<File>() {
+            @Override
+            public int compare(File o1, File o2) {
+                return -o1.getName().compareTo(o2.getName());
+            }
+        }).orElseThrow(() -> new MojoExecutionException("Unable to find any result"));
+        getLog().info("CSV: " + csv);
+
+        List<TestSmellRow> res;
+        try (BufferedReader br = new BufferedReader(new FileReader(csv))) {
+            res = br.lines().skip(1).map(TestSmellRow::new).collect(Collectors.toList());
+        }
+
+        for(TestSmellRow s : res) {
+            getLog().info(s.getSummary());
+        }
     }
 
     @Override
