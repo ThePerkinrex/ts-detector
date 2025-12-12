@@ -20,6 +20,7 @@ import es.upm.grise.profundizacion.grupo.aa.mapping.MappingDetector;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
@@ -176,7 +177,7 @@ public class TsDetectorMojo extends AbstractMojo {
         return res;
     }
 
-    private void findSmells(String javaExecutable, File testSmellDetector, List<UnitTestPair> pairs) throws IOException, MojoExecutionException {
+    private void findSmells(String javaExecutable, File testSmellDetector, List<UnitTestPair> pairs) throws IOException, MojoExecutionException, MojoFailureException {
 
         getLog().info("Running smell detector");
         File wd = getPluginSubDir("smell-detector");
@@ -212,13 +213,20 @@ public class TsDetectorMojo extends AbstractMojo {
             res = br.lines().skip(1).map(TestSmellRow::new).collect(Collectors.toList());
         }
 
+        boolean anyFails = false;
+
         for(TestSmellRow s : res) {
-            getLog().info(s.getSummary());
+            getLog().error(s.getSummary());
+            anyFails |= s.isFailing();
+        }
+
+        if (anyFails) {
+            throw new MojoFailureException("Test smells were found");
         }
     }
 
     @Override
-    public void execute() throws MojoExecutionException {
+    public void execute() throws MojoExecutionException, MojoFailureException {
         try {
             String javaExecutable = getJavaExecutable();
             File testFileDetector = extractResourceToFile("TestFileDetector.jar");

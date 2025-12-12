@@ -260,5 +260,38 @@ public class TestSmellRow {
         return sb.toString();
     }
 
+    public boolean isFailing() {
+        // array of smell names and their values
+        int[] values = {
+                assertionRoulette,
+                conditionalTestLogic,
+                constructorInitialization,
+                defaultTest,
+                emptyTest,
+                exceptionCatchingThrowing,
+                generalFixture,
+                mysteryGuest,
+                printStatement,
+                redundantAssertion,
+                sensitiveEquality,
+                verboseTest,
+                sleepyTest,
+                eagerTest,
+                lazyTest,
+                duplicateAssert,
+                unknownTest,
+                ignoredTest,
+                resourceOptimism,
+                magicNumberTest,
+                dependentTest
+        };
+
+        boolean anySmell = false;
+        for (int i = 0; i < values.length && !anySmell; i++) {
+            anySmell = values[i] > 0;
+        }
+        return anySmell;
+    }
+
 }
 
