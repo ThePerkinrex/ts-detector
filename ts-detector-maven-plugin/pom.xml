@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>ts-detector-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>Test-Smell detector plugin</name>
 
     <parent>
-        <groupId>es.upm.grise.profundizacion.grupo.aa</groupId>
+        <groupId>com.github.ThePerkinrex.ts-detector</groupId>
         <artifactId>ts-detector-project</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>

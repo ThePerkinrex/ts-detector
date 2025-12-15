@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>es.upm.grise.profundizacion.grupo.aa</groupId>
+    <groupId>com.github.ThePerkinrex.ts-detector</groupId>
     <artifactId>ts-detector-project</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -13,14 +13,14 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <plugin.version>1.0-SNAPSHOT</plugin.version>
+        <plugin.version>1.0.0</plugin.version>
     </properties>
 
     <build>
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>es.upm.grise.profundizacion.grupo.aa</groupId>
+                    <groupId>com.github.ThePerkinrex.ts-detector</groupId>
                     <artifactId>ts-detector-maven-plugin</artifactId>
                     <version>${plugin.version}</version>
                 </plugin>
