@@ -37,7 +37,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Mojo(name = "ts-detect", defaultPhase = LifecyclePhase.VALIDATE)
+@Mojo(name = "ts-detect", defaultPhase = LifecyclePhase.TEST)
 public class TsDetectorMojo extends AbstractMojo {
 
     @Inject // JSR-330 compatible DI
