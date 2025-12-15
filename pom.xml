@@ -30,7 +30,7 @@
 
     <modules>
         <module>ts-detector-maven-plugin</module>
-        <module>ts-detector-testing</module>
+<!--        <module>ts-detector-testing</module>-->
     </modules>
 
 </project>
